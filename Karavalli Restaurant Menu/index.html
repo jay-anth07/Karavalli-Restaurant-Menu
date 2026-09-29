@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Karavalli | Coastal & Heritage Dining</title>
+  <!-- Google Fonts: Syne & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="#home" class="brand-logo">
+        <div class="brand-badge">K</div>
+        <div class="brand-text">
+          <h1>KARAVALLI</h1>
+          <span>Coastal Heritage Dining</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#spotlight">Featured</a></li>
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#offers" onclick="openOfferModal('biriyanis')">Today's Offers</a></li>
+          <li><a href="#location">Location</a></li>
+        </ul>
+      </nav>
+
+      <div style="display: flex; align-items: center; gap: 0.8rem;">
+        <button class="cart-trigger-btn" id="openCartBtn" aria-label="View Shopping Cart">
+          <i data-lucide="shopping-bag" style="width: 18px; height: 18px;"></i>
+          <span>Cart</span>
+          <span class="cart-badge" id="cartCountBadge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-intro-section" id="home">
+    <div class="hero-wrapper reveal-pop">
+      <div class="hero-text-block">
+        <div class="hero-eyebrow">
+          <i data-lucide="sparkles" style="width: 14px; height: 14px;"></i>
+          Authentic Coastal Flavours
+        </div>
+        <h2 class="hero-title">Welcome to <span>Karavalli</span> Kitchen & Lounge</h2>
+        <p class="hero-desc">
+          Rooted in the timeless traditions of the southwestern coast, Karavalli celebrates artisanal recipes, fresh local spices, slow-cooked claypots, and wood-fired delicacies crafted to culinary perfection.
+        </p>
+        <div class="hero-meta-grid">
+          <div class="hero-meta-item">
+            <div class="hero-meta-icon"><i data-lucide="clock" style="width: 18px; height: 18px;"></i></div>
+            <div>
+              <div class="hero-meta-label">Open Daily</div>
+              <div class="hero-meta-val">11:30 AM – 11:00 PM</div>
+            </div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-icon"><i data-lucide="phone-call" style="width: 18px; height: 18px;"></i></div>
+            <div>
+              <div class="hero-meta-label">Reservations & Orders</div>
+              <div class="hero-meta-val">+91 80 2558 5454</div>
+            </div>
+          </div>
+          <div class="hero-meta-item">
+            <div class="hero-meta-icon"><i data-lucide="map-pin" style="width: 18px; height: 18px;"></i></div>
+            <div>
+              <div class="hero-meta-label">Location</div>
+              <div class="hero-meta-val">Residency Road, Bangalore</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side Compact Ambiance Frame matching text block -->
+      <div class="hero-media-card">
+        <img 
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80" 
+          alt="Karavalli Restaurant Warm Coastal Ambiance"
+          loading="eager"
+        >
+        <div class="hero-media-badge">
+          <span style="font-weight: 700; color: var(--color-latte);">Coastal Heritage Dining</span>
+          <span style="color: var(--color-cream); font-size: 0.8rem;">★ 4.9 (1.8k+ Reviews)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories-strip-section" id="menu">
+    <div style="margin-bottom: 0.8rem; display: flex; justify-content: space-between; align-items: center;" class="reveal-pop">
+      <h3 style="font-family: var(--font-heading); color: var(--color-latte); font-size: 1.3rem;">Explore Categories</h3>
+      <span style="font-size: 0.82rem; color: var(--color-cream); opacity: 0.7;">Click any category to browse offers & featured items</span>
+    </div>
+    <div class="category-scroll-container reveal-pop" id="categoryTabsContainer">
+      <!-- Injected via JavaScript -->
+    </div>
+  </section>
+
+  <section class="spotlight-slider-section" id="spotlight">
+    <div class="spotlight-stage reveal-pop">
+      <button class="slider-nav-btn" id="prevSlideBtn" aria-label="Previous Item">
+        <i data-lucide="chevron-left" style="width: 24px; height: 24px;"></i>
+      </button>
+
+      <div class="slider-content-layout" id="spotlightContent">
+        <!-- Rendered dynamically via JavaScript -->
+      </div>
+
+      <button class="slider-nav-btn" id="nextSlideBtn" aria-label="Next Item">
+        <i data-lucide="chevron-right" style="width: 24px; height: 24px;"></i>
+      </button>
+    </div>
+  </section>
+
+  <section class="menu-grid-section">
+    <div class="section-header-box reveal-pop">
+      <div>
+        <h3 class="section-title" id="currentCategoryTitle">Featured Dishes</h3>
+        <p class="section-subtitle">Freshly prepared with authentic Karavalli spices and recipes</p>
+      </div>
+    </div>
+
+    <div class="food-cards-grid" id="foodCardsGrid">
+      <!-- Rendered dynamically via JavaScript with .reveal-pop -->
+    </div>
+  </section>
+
+  <section class="story-section" id="story">
+    <div class="story-container reveal-pop">
+      <h2>The Soul of Karavalli</h2>
+      <p>
+        For decades, Karavalli has been dedicated to honoring the indigenous recipes of the coastal belt. We source fragrant tellicherry peppercorns, cold-pressed coconut oils, clay-baked earthen pots, and traditional tiffin griddles.
+      </p>
+      <p>
+        Every dish—from our slow-simmered biriyanis to our crisp golden dosas and house-churned artisanal kulfis—is an ode to coastal culinary craftsmanship.
+      </p>
+    </div>
+  </section>
+
+  <section class="location-section" id="location">
+    <div class="location-grid reveal-pop">
+      <div class="loc-info-card">
+        <h3>Visit Karavalli</h3>
+        <ul class="loc-detail-list">
+          <li>
+            <i data-lucide="map-pin"></i>
+            <div>
+              <strong style="color: var(--color-latte);">Address:</strong><br>
+              66, Gateway Hotel, Residency Road, Shanthala Nagar, Ashok Nagar, Bengaluru, Karnataka 560025
+            </div>
+          </li>
+          <li>
+            <i data-lucide="clock"></i>
+            <div>
+              <strong style="color: var(--color-latte);">Operating Hours:</strong><br>
+              Lunch: 12:30 PM – 3:30 PM<br>
+              Dinner: 7:00 PM – 11:30 PM (All 7 Days)
+            </div>
+          </li>
+          <li>
+            <i data-lucide="phone"></i>
+            <div>
+              <strong style="color: var(--color-latte);">Phone & Valet:</strong><br>
+              +91 80 6660 4545 | Free Valet Parking Available
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="loc-map-fake">
+        <i data-lucide="compass" style="width: 44px; height: 44px; color: var(--color-terracotta); margin-bottom: 0.8rem;"></i>
+        <h4 style="font-family: var(--font-heading); color: var(--color-latte); font-size: 1.25rem;">Residency Road, Bengaluru</h4>
+        <p style="color: rgba(244, 241, 222, 0.7); font-size: 0.85rem; max-width: 320px; margin-top: 0.3rem;">
+          Centrally situated in Bengaluru with lush coastal garden dining spaces and serene indoor verandas.
+        </p>
+        <button class="btn-primary" style="margin-top: 1.2rem; font-size: 0.85rem; padding: 0.5rem 1.2rem;" onclick="window.open('https://maps.google.com/?q=Karavalli+Bangalore', '_blank')">
+          <i data-lucide="navigation" style="width: 16px; height: 16px;"></i> Get Directions
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer-site">
+    <div class="footer-content">
+      <div class="brand-logo">
+        <div class="brand-badge">K</div>
+        <div class="brand-text">
+          <h2 style="font-family: var(--font-heading); font-size: 1.2rem; color: var(--color-latte);">KARAVALLI</h2>
+          <span style="font-size: 0.7rem; color: var(--color-terracotta); text-transform: uppercase;">Fine Coastal Dining</span>
+        </div>
+      </div>
+      <div>
+        <p style="color: var(--color-latte);">Curated Coastal Tastes &bull; Since 1990</p>
+      </div>
+    </div>
+    <div class="footer-copy">
+      &copy; 2026 Karavalli Coastal Dining. All rights reserved. Built with HTML, CSS & JavaScript.
+    </div>
+  </footer>
+
+  <div class="offers-modal-backdrop" id="offersModal">
+    <div class="offers-modal-dialog">
+      <div class="offers-modal-header">
+        <span class="offers-modal-badge" id="modalOfferCategoryBadge">Category Special</span>
+        <h3 class="offers-modal-title">Chef's Special Offers</h3>
+        <p style="color: rgba(244, 241, 222, 0.75); font-size: 0.88rem;">Handpicked coastal discounts for you</p>
+      </div>
+
+      <div class="offers-card-container">
+        <button class="modal-nav-btn" id="modalPrevOfferBtn" aria-label="Previous Offer">
+          <i data-lucide="chevron-left" style="width: 20px; height: 20px;"></i>
+        </button>
+
+        <div class="offer-single-card" id="modalOfferCardBody">
+          <!-- Dynamic Offer Card Injected here -->
+        </div>
+
+        <button class="modal-nav-btn" id="modalNextOfferBtn" aria-label="Next Offer">
+          <i data-lucide="chevron-right" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <!-- Skip Button right below cards -->
+      <button class="modal-skip-btn" id="skipOffersBtn">Skip Offers & View Menu</button>
+    </div>
+  </div>
+
+  <div class="cart-drawer-backdrop" id="cartBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-head">
+      <h3>
+        <i data-lucide="shopping-cart" style="width: 20px; height: 20px; color: var(--color-terracotta);"></i>
+        Your Feast Cart
+      </h3>
+      <button class="close-cart-btn" id="closeCartBtn" aria-label="Close cart">
+        <i data-lucide="x" style="width: 22px; height: 22px;"></i>
+      </button>
+    </div>
+
+    <div class="cart-items-list" id="cartItemsList">
+      <!-- Cart items injected via JS -->
+    </div>
+
+    <div class="cart-drawer-foot">
+      <div class="cart-summary-line">
+        <span>Items Subtotal</span>
+        <span id="cartSubtotalText">₹0</span>
+      </div>
+      <div class="cart-summary-line">
+        <span>GST & Restaurant Charges (5%)</span>
+        <span id="cartGstText">₹0</span>
+      </div>
+      <div class="cart-summary-line total-line">
+        <span>Grand Total</span>
+        <span id="cartTotalText">₹0</span>
+      </div>
+      <button class="btn-checkout" id="checkoutBtn" disabled>
+        <span>Complete Order</span>
+        <i data-lucide="arrow-right" style="width: 18px; height: 18px;"></i>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Step 2: Order Review & Confirmation Modal -->
+  <div class="confirm-modal-backdrop" id="orderConfirmModal">
+    <div class="confirm-modal-card">
+      <div class="confirm-modal-header">
+        <h3>
+          <i data-lucide="clipboard-check" style="width: 22px; height: 22px; color: var(--color-terracotta);"></i>
+          Review & Confirm Order
+        </h3>
+        <button class="close-cart-btn" id="closeConfirmModalBtn" aria-label="Close review modal">
+          <i data-lucide="x" style="width: 20px; height: 20px;"></i>
+        </button>
+      </div>
+
+      <div class="confirm-items-scroll" id="confirmItemsList">
+        <!-- Rendered dynamically -->
+      </div>
+
+      <div class="confirm-modal-footer">
+        <div class="confirm-totals-row">
+          <span>Items Subtotal</span>
+          <span id="confirmSubtotalText">₹0</span>
+        </div>
+        <div class="confirm-totals-row">
+          <span>GST & Charges (5%)</span>
+          <span id="confirmGstText">₹0</span>
+        </div>
+        <div class="confirm-totals-row grand">
+          <span>Grand Total</span>
+          <span id="confirmGrandTotalText">₹0</span>
+        </div>
+
+        <div class="confirm-actions-row">
+          <button class="btn-confirm-back" id="backToCartBtn">Back to Cart</button>
+          <button class="btn-confirm-final" id="finalConfirmOrderBtn">
+            <span>Confirm Order</span>
+            <i data-lucide="check-circle-2" style="width: 18px; height: 18px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-modal-backdrop" id="successModal">
+    <div class="success-modal-card">
+      <div class="success-icon-badge">
+        <i data-lucide="check" style="width: 38px; height: 38px;"></i>
+      </div>
+      <h2>Order Successfully Completed!</h2>
+      <p id="successSummaryText">
+        Your culinary order has been received by the Karavalli chefs. It is being freshly cooked with authentic coastal spices and will be served shortly.
+      </p>
+      
+      <div class="redirect-timer-bar-wrap">
+        <div class="redirect-timer-bar-fill" id="redirectProgressBar"></div>
+      </div>
+      <div class="redirect-timer-text" id="redirectCountdownText">Redirecting to Home in 3 seconds...</div>
+    </div>
+  </div>
+
+  <div class="cart-toast" id="cartToast">
+    <i data-lucide="check-circle" style="color: var(--color-latte); width: 18px; height: 18px;"></i>
+    <span id="cartToastMessage">Dish added to cart!</span>
+  </div>
+
+  <!-- Smart Combo Recommendation Modal -->
+  <div class="combo-modal-backdrop" id="comboModal">
+    <div class="combo-modal-card">
+      <div class="combo-badge">
+        <i data-lucide="sparkles" style="width: 13px; height: 13px;"></i>
+        <span>Perfect Pairing</span>
+      </div>
+      <h3 class="combo-modal-title" id="comboModalHeading">Make it a Combo?</h3>
+      <p class="combo-modal-pitch" id="comboModalPitch">
+        Hot &amp; crisp? Cool it down with a frosty sip!
+      </p>
+
+      <div class="combo-dish-preview">
+        <img src="" alt="" class="combo-dish-thumb" id="comboDishImg">
+        <div class="combo-dish-details">
+          <h4 id="comboDishName">Dish Name</h4>
+          <p id="comboDishDesc">Aromatic pairing</p>
+          <div class="combo-dish-price-tag" id="comboDishPrice">₹0</div>
+        </div>
+      </div>
+
+      <div class="combo-actions-wrap">
+        <button class="btn-combo-accept" id="comboAcceptBtn">
+          <i data-lucide="plus" style="width: 17px; height: 17px;"></i>
+          <span id="comboAcceptBtnText">+ Add for ₹0</span>
+        </button>
+        <button class="btn-combo-decline" id="comboDeclineBtn">
+          No, thanks
+        </button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
